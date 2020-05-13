@@ -1,7 +1,7 @@
 data:
     image: busybox
     volumes:
-        - ../../:/var/www/sylius
+        - ../../:/var/www/ofd
         - /vendor
         - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
         - ~/.composer:/root/.composer
@@ -26,20 +26,20 @@ mysql:
 
 php:
     build: php
-    working_dir: /var/www/sylius
+    working_dir: /var/www/ofd
     volumes_from:
         - data
     links:
         - mysql
         - elasticsearch
-        - memcached
+        # - memcached
     mem_limit: 2000000000
 
 elasticsearch:
     image: elasticsearch
 
-memcached:
-    image: memcached
-
-selenium:
-    image: selenium/standalone-chrome-debug
+# memcached:
+#     image: memcached
+#
+# selenium:
+#     image: selenium/standalone-chrome-debug

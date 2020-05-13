@@ -1,0 +1,10 @@
+#!/usr/bin/php
+<?php
+$nginx = json_decode(shell_exec('docker inspect $(docker-compose ps -q nginx)'));
+echo "Nginx: " . $nginx[0]->NetworkSettings->IPAddress . "\r\n";
+$php = json_decode(shell_exec('docker inspect $(docker-compose ps -q php)'));
+echo "PHP: " . $php[0]->NetworkSettings->IPAddress . "\r\n";
+$mysql = json_decode(shell_exec('docker inspect $(docker-compose ps -q mysql)'));
+echo "MySQL: " . $mysql[0]->NetworkSettings->IPAddress . "\r\n";
+$mysql = json_decode(shell_exec('docker inspect $(docker-compose ps -q elastic)'));
+echo "Elastic: " . $mysql[0]->NetworkSettings->IPAddress . "\r\n";
