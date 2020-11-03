@@ -26,6 +26,20 @@ RUN apt-get install -y \
 
 #COPY php.ini        /usr/local/etc/php/conf.d/
 COPY default.conf    /usr/local/etc/php-fpm.d/www.conf
+COPY xdebug.ini    /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN pecl install xdebug;
+#     echo -e '\n\n[XDEBUG]\nzend_extension="/usr/lib64/php/modules/xdebug.so"' >> /etc/php.d/xdebug.ini; \
+#     echo "error_reporting=E_ALL" >> /etc/php.d/xdebug.ini; \
+#     echo "display_startup_errors=On" >> /etc/php.d/xdebug.ini; \
+#     echo "display_errors=On" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_enable=1" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_host=192.168.1.109" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_port=9000" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_handler=dbgp" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_autostart=1" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.remote_connect_back=0" >> /etc/php.d/xdebug.ini; \
+#     echo "xdebug.idekey=docker" >> /etc/php.d/xdebug.ini; 
 
 EXPOSE 9000
 
